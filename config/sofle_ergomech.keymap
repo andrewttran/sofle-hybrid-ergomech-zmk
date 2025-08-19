@@ -6,6 +6,9 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
 #include <dt-bindings/zmk/pointing.h>
 
 #define BASE 0
@@ -32,12 +35,12 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp GRAVE       &kp N1            &kp N2    &kp N3            &kp N4          &kp N5  &kp N6     &kp N7     &kp N8        &kp N9      &kp N0      &kp EQUAL
-&kp TAB         &kp Q             &kp W     &kp E             &kp R           &kp T   &kp Y      &kp U      &kp I         &kp O       &kp P       &kp MINUS
-&kp BACKSPACE   &kp A             &kp S     &lt 4 D           &lt 2 F         &kp G   &kp H      &lt 3 J    &kp K         &kp L       &kp SEMI    &kp SQT
-&kp UNDERSCORE  &kp Z             &kp X     &kp C             &kp V           &kp B   &kp N      &kp M      &kp COMMA     &kp DOT     &kp FSLH    &caps_word
-&kp C_MUTE      &kp LEFT_CONTROL  &kp LALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT  &mo 1   &mo 1      &kp SPACE  &key_repeat   &kp RETURN  &kp ESCAPE
-                                                                                      &kp ENTER  &kp RIGHT  &kp UP_ARROW  &kp LEFT    &kp DOWN
+&kp GRAVE       &kp N1          &kp N2    &kp N3            &kp N4          &kp N5  &kp N6     &kp N7     &kp N8                   &kp N9      &kp N0                    &kp EQUAL
+&kp TAB         &kp Q           &kp W     &kp E             &kp R           &kp T   &kp Y      &kp U      &kp I                    &kp O       &kp P                     &kp MINUS
+&kp BACKSPACE   &kp A           &kp S     &lt 4 D           &lt 2 F         &kp G   &kp H      &lt 3 J    &lt 5 K                  &kp L       &kp SEMI                  &kp SQT
+&kp UNDERSCORE  &kp Z           &kp X     &kp C             &kp V           &kp B   &kp N      &kp M      &kp COMMA                &kp DOT     &kp FSLH                  &caps_word
+&kp C_MUTE      &kp KP_NUMLOCK  &kp LALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT  &mo 1   &mo 1      &kp SPACE  &mt LEFT_CONTROL ESCAPE  &kp RETURN  &kp LS(LA(LC(LEFT_GUI)))
+                                                                                    &kp ENTER  &kp RIGHT  &kp UP_ARROW             &kp LEFT    &kp DOWN
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -77,10 +80,10 @@
             //                |      |       |       |      |      |  |      |      |      |       |      |
 
             bindings = <
-&trans  &trans          &trans                &trans            &trans  &trans  &trans     &trans    &trans    &trans     &trans   &trans
-&trans  &kp K_PASTE     &kp LA(LEFT_COMMAND)  &kp LC(LEFT_ALT)  &trans  &trans  &kp PG_UP  &trans    &kp UP    &trans     &kp N0   &trans
-&trans  &kp LEFT_SHIFT  &kp LEFT_GUI          &kp LEFT_ALT      &trans  &trans  &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT  &kp DEL  &kp BSPC
-&trans  &kp K_UNDO      &kp K_CUT             &kp K_COPY        &trans  &trans  &trans     &trans    &trans    &trans     &trans   &trans
+&trans  &trans          &trans                &trans            &trans  &trans  &trans     &trans    &trans    &trans     &trans      &trans
+&trans  &kp K_PASTE     &kp LA(LEFT_COMMAND)  &kp LC(LEFT_ALT)  &trans  &trans  &kp PG_UP  &trans    &kp UP    &trans     &trans      &trans
+&trans  &kp LEFT_SHIFT  &kp LEFT_GUI          &kp LEFT_ALT      &trans  &trans  &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT  &kp RETURN  &trans
+&trans  &kp K_UNDO      &kp K_CUT             &kp K_COPY        &trans  &trans  &trans     &trans    &trans    &trans     &trans      &trans
 &trans  &trans          &trans                &trans            &trans  &trans  &trans     &trans    &trans    &trans     &trans
                                                                                 &kp A      &kp B     &kp C     &kp D      &kp E
             >;
